@@ -1,31 +1,59 @@
 from PIL import ImageGrab, Image
+import winsound
+import keyboard
 import random
 import pygame
 import time
 
-image = ImageGrab.grab()
 pygame.init()
 
-screen = pygame.display.set_mode((image.width, image.height))
+screen_width = 2560
+screen_height = 1440
+screen = pygame.display.set_mode((screen_width, screen_height))
 clock = pygame.time.Clock()
 
 def surface(image):
-	i = pygame.image.fromstring(image.tobytes(), image.size, image.mode).convert()
-	return pygame.transform.scale(i, (2560, 1440))
+    surface = pygame.image.fromstring(image.tobytes(), image.size, image.mode).convert()
+    return pygame.transform.scale(surface, (screen_width, screen_height))
 
 def melt(image):
-	random_column = random.randint(0, image.width)
-	c = image.crop((random_column, 0, random_column + random.randint(5, 20), image.height))
-	image.paste(c, (random_column, random.randint(1, 3)))
+    random_column = random.randint(0, image.width)
+    crop_width = random.randint(5, 20)
+    cropped_image = image.crop((random_column, 0, random_column + crop_width, image.height))
+    image.paste(cropped_image, (random_column, random.randint(1, 3)))
 
-t = 0 # change value for more crazyness 
-pg_im = surface(image)
-while 1:
-	for ev in pygame.event.get(): pass
-	screen.blit(pg_im, (0, 0))
-	if t % random.randint(2, 5):
-		melt(image)
-		pg_im = surface(image)
-	pygame.display.update()
-	clock.tick(120)
-	t += 1
+def sound():
+    sounds = ["SystemAsterisk", "SystemExclamation", "SystemExit", "SystemHand", "SystemQuestion"]
+    soundchoice = random.choice(sounds)
+    winsound.PlaySound(soundchoice, winsound.SND_ALIAS)
+
+def kill():
+    return keyboard.is_pressed('win+backspace')
+
+image = ImageGrab.grab()
+pg_surface = surface(image)
+
+running = True
+ticks = 0
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    screen.blit(pg_surface, (0, 0))
+
+    if ticks % random.randint(2, 5) == 0:
+        melt(image)
+        pg_surface = surface(image)
+
+    if random.random() < 0.01:  
+        sound()
+
+    if kill():
+        running = False
+
+    pygame.display.update()
+    clock.tick(120)
+    ticks += 1
+
+pygame.quit()
