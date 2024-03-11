@@ -41,10 +41,10 @@
       }
 
       if (isMacOS()) {
-        document.write('<img src="assets/nomelt.png" onclick="download()">');
+        document.write('<img src="assets/nomelt.png" onclick="ice()">');
         document.write('<p>windows only</p>');
       } else {
-        document.write('<img src="assets/melt.png" onclick="ice()">');
+        document.write('<img src="assets/melt.png" onclick="download()">');
         document.write('<p>press the ice cube to install.</p>');
       }
     </script>
@@ -58,10 +58,7 @@
     function download() {
       ice();
       console.log("starting download");
-      window.open("https://github.com/agenericapple/melt/releases/download/v2.0/Melt.exe");
-      console.log("main download complete")
-      window.open("https://github.com/agenericapple/melt/releases/download/v2.0/portablemelt.exe")
-      console.log("portable download complete")
+      window.open("https://github.com/agenericapple/melt/releases/download/v2.0/melt.zip");
       console.log("download finished");
     }
   </script>
