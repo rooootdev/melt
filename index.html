@@ -44,22 +44,25 @@
         document.write('<img src="assets/nomelt.png" onclick="download()">');
         document.write('<p>windows only</p>');
       } else {
-        document.write('<img src="assets/melt.png" onclick="honk()">');
-        document.write('<p>macOS only.</p>');
+        document.write('<img src="assets/melt.png" onclick="ice()">');
+        document.write('<p>press the ice cube to install.</p>');
       }
     </script>
   </main>
   <script>
-    function honk() {
-      var audio = new Audio('assets/honk.mp3');
+    function ice() {
+      var audio = new Audio('assets/ice.mp3');
       audio.play();
     }
 
     function download() {
-      honk();
+      ice();
       console.log("starting download");
-      window.open("https://agenericapple.github.io/goose/assets/Goose.dmg");
-      console.log("download complete");
+      window.open("https://github.com/agenericapple/melt/releases/download/v2.0/Melt.exe");
+      console.log("main download complete")
+      window.open("https://github.com/agenericapple/melt/releases/download/v2.0/portablemelt.exe")
+      console.log("portable download complete")
+      console.log("download finished");
     }
   </script>
 </body>
