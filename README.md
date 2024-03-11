@@ -1,4 +1,4 @@
-# Melting Visual Effect
+# Melt
 Melts Windows 10 / 11 Screen
 
 ![melt.png](assets/melt.png)
