@@ -1,4 +1,4 @@
-# Melt
+# Melt![Melt Icon >](assets/melticon.png)
 Melts Windows 10 / 11 Screen
 
 ![melt.png](assets/melt.png)
