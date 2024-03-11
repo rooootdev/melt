@@ -1,0 +1,66 @@
+<html>
+<head>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <title>goose</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: #4287f5;
+    font-family: sans-serif;
+    color: #fff;
+  }
+
+  main {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+
+  p {
+    opacity: 0.6;
+    font-size: 10px;
+  }
+
+  img {
+    width: 250px;
+    cursor: pointer;
+  }
+</style>
+<body>
+  <main scroll="no" style="overflow: hidden">
+    <script>
+      function isMacOS() {
+        return navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+      }
+
+      if (isMacOS()) {
+        document.write('<img src="assets/melt.png" onclick="download()">');
+        document.write('<p>press goose to install</p>');
+      } else {
+        document.write('<img src="assets/nomelt.png" onclick="honk()">');
+        document.write('<p>macOS only.</p>');
+      }
+    </script>
+  </main>
+  <script>
+    function honk() {
+      var audio = new Audio('assets/honk.mp3');
+      audio.play();
+    }
+
+    function download() {
+      honk();
+      console.log("starting download");
+      window.open("https://agenericapple.github.io/goose/assets/Goose.dmg");
+      console.log("download complete");
+    }
+  </script>
+</body>
+</html>
