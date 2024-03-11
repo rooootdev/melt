@@ -1,7 +1,7 @@
-# Melt![Melt Icon >](assets/melticon.png)
+# Melt![Melt Icon >](assets/melt.png)
 Melts Windows 10 / 11 Screen
 
-![melt.png](assets/melt.png)
+![melt.png](assets/demo.png)
 
 ## Dependencies:
 - **python** `Python 3.8+` `([Get Python](https://www.python.org/downloads/))`
